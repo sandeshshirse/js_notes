@@ -1,0 +1,1222 @@
+//dynamically typed = no need to tell, which type we are using (Boolean, Float32Array, CharacterData, int)
+// "=" means agginging a value
+// ===================================
+// JS LECTURE 1: INTRODUCTION, VARIABLES & DATA TYPES
+// ===================================
+
+/*
+    -- 1. WHAT IS JAVASCRIPT? --
+    * JS is a programming language used to give instructions to the computer.
+    * It was primarily designed to add interactivity and dynamic behavior to HTML pages (Web Development).
+    * It is an interpreted scripting language (runs without prior compilation).
+    * It is the 'brain' of the web (HTML is the skeleton, CSS is the skin, JS is the brain).
+*/
+
+// Our First JS Code: Used to print a message to the console (developer tools).
+// console.log("Hello World!");
+
+
+/*
+    -- 2. VARIABLES IN JS --
+    * Variables are named containers for storing data values.
+    * They store data in the computer's memory.
+*/
+let age = 25;
+let firstName = "Shradha";
+
+// Variable Naming Rules:
+// 1. Case Sensitive: 'a' and 'A' are different variables.
+// 2. Only letters, digits (0-9), underscore (_), and $ are allowed.
+// 3. Must begin with a letter, underscore (_), or $.
+// 4. Reserved words (like 'let', 'const', 'function') cannot be used.
+
+
+/*
+    -- 3. VARIABLE DECLARATIONS (let, const, var) --
+    These keywords define how variables behave regarding updating and re-declaration.
+*/
+
+// A. var (OLD METHOD - Avoid in modern JS)
+var oldVar = 10;
+var oldVar = 20; // Can be re-declared.
+oldVar = 30; // Can be updated.
+// It is a global-scope or function-scope variable.
+
+// B. let (MOST COMMON FOR VARIABLES THAT CHANGE)
+let newVar = 10;
+// let newVar = 20; // ERROR: Cannot be re-declared.
+newVar = 30; // Can be updated.
+// It is a block-scope variable (limited to the {} block).
+
+// C. const (FOR CONSTANTS - RECOMMENDED FOR VARIABLES THAT DON'T CHANGE)
+const PI = 3.14;
+// const PI = 4; // ERROR: Cannot be re-declared.
+// PI = 4; // ERROR: Cannot be updated.
+// It is a block-scope variable. **Must be initialized at the time of declaration.**
+
+// **BEST PRACTICE:** Use 'const' by default. If you need to change the variable later, switch to 'let'. Avoid 'var'.
+
+
+/*
+    -- 4. DATA TYPES IN JS --
+    JS has 8 fundamental data types.
+*/
+
+// A. Primitive Data Types (7 types)
+let num = 123;         // 1. Number (includes integers and floating point numbers)
+let str = "Hello";     // 2. String (any text, must be in quotes)
+let bool = true;       // 3. Boolean (true or false)
+let undeclared;        // 4. Undefined (variable declared but not assigned a value)
+let empty = null;      // 5. Null (intentional absence of any object value)
+let bigNum = 123n;     // 6. BigInt (for very large integers)
+let sym = Symbol("id"); // 7. Symbol (for unique identifiers)
+
+// To check the type of a variable, use the 'typeof' operator:
+// console.log(typeof num); // Output: "number"
+
+// B. Non-Primitive Data Type (Object)
+// Object: A collection of related data and/or functionality.
+
+// The most common Object types are:
+// 1. Object literal (like a dictionary in Python or Map in Java)
+const student = {
+    name: "Alex",
+    age: 20,
+    isPass: true
+};
+// Accessing object properties:
+// console.log(student.name); // Dot notation
+// console.log(student["age"]); // Bracket notation
+
+// 2. Array (ordered list of values)
+const colors = ["Red", "Green", "Blue"];
+
+// 3. Function (covered in a later lecture)
+  
+
+
+// ===================================
+// JS LECTURE 2: OPERATORS & CONDITIONALS
+// ===================================
+
+/*
+    -- 1. OPERATORS IN JAVASCRIPT --
+    Operators are used to perform some operation on data (operands).
+*/
+
+// A. Arithmetic Operators: Used for basic math operations.
+let a = 5;
+let b = 2;
+// Addition (+)
+// Subtraction (-)
+// Multiplication (*)
+// Division (/)
+// Modulus (%): Returns the remainder of a division.
+let remainder = a % b; // remainder = 1
+// Exponentiation (**): a raised to the power of b.
+let power = a ** b; // power = 25 (5*5)
+
+
+// B. Unary Operators: Operate on a single operand.
+// Increment (++) and Decrement (--)
+a++; // Post-increment: use 'a' then increase. a becomes 6.
+++b; // Pre-increment: increase 'b' then use it. b becomes 3.
+
+
+// C. Assignment Operators: Assign values to variables.
+// (=) simple assignment
+let x = 10;
+// (+=) addition assignment
+x += 5; // x = x + 5 (x is now 15)
+// (-=, *=, /=, %=, **=) work similarly for other operations
+
+
+// D. Comparison Operators: Compare two values, return a boolean (true/false).
+// Equal to (==): Checks only the value.
+let val1 = 5;
+let val2 = "5";
+let result1 = val1 == val2; // true (value is the same)
+
+// Equal to & Type (===): Checks both value AND data type (Strict Equality). **RECOMMENDED**
+let result2 = val1 === val2; // false (number is not equal to string)
+
+// Not equal to (!=)
+// Not equal to & Type (!==)
+// Greater than (>), Less than (<), Greater than or equal to (>=), Less than or equal to (<=)
+
+
+// E. Logical Operators: Combine or invert boolean conditions.
+let cond1 = a > 0; // true
+let cond2 = b === 3; // true
+
+// Logical AND (&&): True if BOTH conditions are true.
+let andResult = cond1 && cond2; // true
+
+// Logical OR (||): True if AT LEAST ONE condition is true.
+let orResult = cond1 || cond2; // true
+
+// Logical NOT (!): Inverts the boolean result.
+let notResult = !cond1; // false
+
+
+/*
+    -- 2. CONDITIONAL STATEMENTS --
+    Used to execute a block of code only if a specified condition is true.
+*/
+
+// A. if Statement:
+let age = 18;
+if (age >= 18) {
+    // console.log("You can vote.");
+}
+
+// B. if-else Statement:
+if (age > 18) {
+    // console.log("Adult");
+} else {
+    // console.log("Not an adult");
+}
+
+// C. else-if Statement (Chaining multiple conditions):
+let trafficLight = "red";
+if (trafficLight === "red") {
+    // console.log("STOP");
+} else if (trafficLight === "yellow") {
+    // console.log("WAIT");
+} else {
+    // console.log("GO");
+}
+
+// D. Ternary Operator: A concise, single-line if-else.
+// Syntax: condition ? true_output : false_output
+let isAdult = age >= 18 ? "Yes" : "No"; 
+// isAdult will be "Yes"
+
+
+// ===================================
+// JS LECTURE 3: LOOPS & STRINGS
+// ===================================
+
+/*
+    -- 1. LOOPS IN JAVASCRIPT --
+    Loops are used to execute a block of code repeatedly as long as a certain condition is met.
+    They help avoid writing the same code over and over (DRY - Don't Repeat Yourself).
+*/
+
+// A. The 'for' Loop: Used when you know the exact number of iterations.
+/*
+    Syntax:
+    for (initialization; stopping_condition; updation) {
+        // code to be executed
+    }
+*/
+// Example: Print numbers from 1 to 5
+for (let i = 1; i <= 5; i++) {
+    // console.log("i =", i);
+}
+
+// Example: Calculate sum of 1 to 5
+let sum = 0;
+for (let i = 1; i <= 5; i++) {
+    sum = sum + i; // sum += i;
+}
+// console.log("Sum is:", sum); // 15
+
+// B. The 'while' Loop: Used when the number of iterations is not known beforehand.
+/*
+    Syntax:
+    while (condition) {
+        // code to be executed
+        // updation (must be inside the loop to avoid infinite loop)
+    }
+*/
+let i = 1; // Initialization
+while (i <= 5) { // Stopping Condition
+    // console.log("i =", i);
+    i++; // Updation
+}
+
+// C. The 'do-while' Loop: Executes the block of code at least once, then checks the condition.
+/*
+    Syntax:
+    do {
+        // code to be executed
+        // updation
+    } while (condition);
+*/
+let j = 20;
+do {
+    // console.log("j =", j); // This runs once even though j <= 5 is false.
+    j++;
+} while (j <= 5);
+
+
+// D. The 'for-of' Loop: Specifically for iterating over values of an iterable (like Strings and Arrays).
+let str = "ApnaCollege";
+let size = 0;
+for (let val of str) {
+    // console.log("Value is:", val);
+    size++;
+}
+// console.log("String size is:", size);
+
+// E. The 'for-in' Loop: Specifically for iterating over properties (keys) of an Object.
+let student = {
+    name: "Alex",
+    age: 20,
+    isPass: true
+};
+for (let key in student) {
+    // console.log("Key is:", key, "Value is:", student[key]);
+}
+
+// Break and Continue:
+// 'break': Exits the loop entirely.
+// 'continue': Skips the current iteration and moves to the next.
+
+
+/*
+    -- 2. STRINGS IN JAVASCRIPT --
+    * Strings are a sequence of characters used to represent text data.
+    * They must be enclosed in quotes (single or double).
+*/
+let myName = "Shradha Khapra";
+// String Length property
+// console.log(myName.length); // 14
+
+// String Indices (Positions): Start from 0.
+// console.log(myName[0]); // S
+// console.log(myName[13]); // a
+
+// A. Template Literals (String Interpolation):
+// Use backticks (`) to embed variables or expressions directly into a string.
+let price = 10;
+let item = "pen";
+let message = `The price of the ${item} is ${price} rupees.`;
+// console.log(message); // "The price of the pen is 10 rupees."
+
+// B. String Methods: (Strings are immutable, so methods return a NEW string)
+
+// 1. toUpperCase() and toLowerCase()
+let str1 = "hello world";
+// console.log(str1.toUpperCase()); // HELLO WORLD
+
+// 2. trim(): Removes whitespace from both ends of a string.
+let str2 = "   hello   ";
+// console.log(str2.trim()); // "hello"
+
+// 3. slice(start, end?): Returns a part of the string. 'end' is non-inclusive.
+let str3 = "ApnaCollege";
+// console.log(str3.slice(4, 11)); // College
+
+// 4. concat(): Joins two or more strings. (Also done with '+' operator)
+let str4 = "Apna";
+let str5 = "College";
+let result = str4.concat(str5, " ", "Course");
+// console.log(result); // ApnaCollege Course
+
+// 5. replace(searchVal, newVal): Replaces the FIRST occurrence of a value.
+let str6 = "helloo";
+// console.log(str6.replace("o", "i")); // hellio (only first 'o' is replaced)
+// for all replace 
+// let str = "sandesh";
+
+// console.log(str.replaceAll("s","123"))
+// output = 123ande123h
+
+// 6. charAt(index): Returns the character at a specified index.
+// console.log(str6.charAt(1)); // e
+
+ 
+// ===================================
+// JS LECTURE 4: ARRAYS
+// ===================================
+
+/*
+    -- 1. WHAT ARE ARRAYS? --
+    * Arrays are a special type of **object** used to store ordered collections of items.
+    * They are non-primitive data types.
+    * They can hold values of different data types (e.g., numbers, strings, objects).
+*/
+
+// A. Creating Arrays
+let marks = [90, 85, 92, 78, 95];
+let names = ["Shradha", "Aman", "Rahul"];
+let mixed = [101, "apple", true, null]; // Arrays can store different data types
+
+// B. Array Indices
+// Arrays are zero-indexed: the first element is at index 0.
+// To access an element: arrayName[index]
+// console.log(marks[0]); // Output: 90
+// console.log(marks[4]); // Output: 95
+
+// C. Updating and Modifying Elements
+// You can change an element using its index.
+marks[0] = 91; // Changes the first element from 90 to 91
+// console.log(marks); // Output: [91, 85, 92, 78, 95]
+
+// D. Array Length
+// Use the .length property to find the number of elements.
+// console.log(names.length); // Output: 3
+
+// E. Looping Over Arrays (Common Practice)
+// The 'for-of' loop is generally preferred for array values.
+for (let score of marks) {
+    // console.log(score);
+}
+
+/*
+    -- 2. ARRAY METHODS (CRUD Operations) --
+    These methods help manipulate the contents of an array.
+*/
+
+// A. Mutator Methods (Modify the original array)
+
+// 1. push(): Adds an element to the **end** of the array.
+let fruits = ["apple", "banana"];
+fruits.push("orange", "grape");
+// console.log(fruits); // ["apple", "banana", "orange", "grape"]
+
+// 2. pop(): Removes and returns the element from the **end** of the array.
+let removedFruit = fruits.pop();
+// console.log(fruits); // ["apple", "banana", "orange"]
+// console.log(removedFruit); // grape
+
+// 3. unshift(): Adds an element to the **start** of the array.
+fruits.unshift("mango");
+// console.log(fruits); // ["mango", "apple", "banana", "orange"]
+
+// 4. shift(): Removes and returns the element from the **start** of the array.
+fruits.shift();
+// console.log(fruits); // ["apple", "banana", "orange"]
+
+// 5. splice(startIdx, deleteCount, newElem1, ...): Adds, removes, or replaces elements.
+let arr = [1, 2, 3, 4, 5, 6, 7];
+// To remove 2 elements starting from index 2 (removes 3, 4)
+arr.splice(2, 2); // arr is now [1, 2, 5, 6, 7]
+// To add elements at index 2 (deleteCount is 0)
+arr.splice(2, 0, 99, 100); // arr is now [1, 2, 99, 100, 5, 6, 7]
+// To replace 1 element at index 4 with a new value
+arr.splice(4, 1, 50); // arr is now [1, 2, 99, 100, 50, 6, 7]
+
+// B. Accessor Methods (Do NOT modify the original array)
+
+// 1. concat(): Joins two or more arrays and returns a **new array**.
+let array1 = [1, 2, 3];
+let array2 = [4, 5, 6];
+let joinedArray = array1.concat(array2);
+// console.log(joinedArray); // [1, 2, 3, 4, 5, 6]
+
+// 2. toString(): Converts the array into a **single string** of comma-separated values.
+let numArr = [10, 20, 30];
+let arrString = numArr.toString();
+// console.log(arrString); // "10,20,30" (This is a string)
+
+
+
+
+
+
+// ===========================================
+// LECTURE 5: FUNCTIONS & METHODS IN JAVASCRIPT
+// ===========================================
+
+// --- 1. FUNCTION DEFINITION, PARAMETERS, AND RETURN ---
+
+/* * Functions are blocks of reusable code that perform a specific task.
+ * Defined once, can be called (invoked) many times.
+ */
+function logWelcome() {
+    console.log("Welcome to apna college");
+    // Code inside the curly braces is the function body.
+}
+
+// Function Call (Invocation)
+logWelcome();
+
+// Function with Parameters (Inputs)
+function calculateSum(x, y) { // x, y are Parameters (local variables/block scope)
+    let s = x + y;
+    console.log("Sum:", s);
+    // Parameters are accessible only within the function's scope.
+}
+
+// Function Call with Arguments (Actual Values)
+calculateSum(5, 10); // 5 and 10 are Arguments
+
+// Function with Return Value (Output)
+function getProduct(a, b) {
+    let p = a * b;
+    return p; // The 'return' keyword sends a value back from the function
+    // NOTE: Any code after the 'return' statement is unreachable.
+}
+
+let result = getProduct(4, 6);
+console.log("Product:", result); // Output: Product: 24
+
+
+// --- 2. ARROW FUNCTIONS (Modern JS Syntax) ---
+
+/*
+ * Provides a shorter syntax for writing function expressions.
+ * Stored in a variable (usually const).
+ */
+const arrowSum = (a, b) => { // '=>' is the arrow function syntax
+    return a + b;
+};
+
+// Arrow function for a single expression (implicit return)
+const arrowSubtract = (a, b) => a - b;
+
+console.log("Arrow Sum:", arrowSum(20, 5));
+console.log("Arrow Subtract:", arrowSubtract(20, 5));
+
+// Arrow function with no parameters
+const arrowHello = () => console.log("Hello World");
+arrowHello();
+
+// --- 3. HIGHER ORDER FUNCTIONS (HOF) & ARRAY METHODS ---
+
+/*
+ * HOFs: Functions that either take another function as an argument (Callback) 
+ * or return a function from themselves.
+ */
+let arr = [1, 2, 3, 4, 5];
+
+// 3.1. forEach Method (HOF)
+// Executes a callback function once for each array element.
+arr.forEach((val, idx, arr) => {
+    // Callback parameters:
+    // 1. val: Current element value
+    // 2. idx: Current element index (Optional)
+    // 3. arr: The array itself (Optional)
+    console.log(`forEach: ${val} squared is ${val * val}`);
+    // NOTE: forEach does NOT return a new array.
+});
+
+// 3.2. map Method (HOF)
+// Creates a NEW array from the results of calling a function for every array element.
+const squaredArr = arr.map((val) => {
+    return val * val; // The return value forms the new array element
+});
+console.log("Map (New Array):", squaredArr); // Output: [1, 4, 9, 16, 25]
+
+
+// 3.3. filter Method (HOF)
+// Creates a NEW array with all elements that pass the test implemented by the callback function.
+let marks = [92, 85, 95, 78, 99];
+const toppers = marks.filter((mark) => {
+    return mark >= 90; // The callback must return true or false
+});
+console.log("Filter (90+ Marks):", toppers); // Output: [92, 95, 99]
+
+
+// 3.4. reduce Method (HOF)
+// Executes a reducer function on each element, resulting in a SINGLE output value.
+const sum = arr.reduce((accumulator, currentValue) => {
+    // The value returned here becomes the 'accumulator' in the next call.
+    return accumulator + currentValue; 
+});
+console.log("Reduce (Sum):", sum); // Output: 15 (1+2+3+4+5)
+
+// Example: Reduce to find the largest element
+const maxVal = arr.reduce((max, current) => {
+    return max > current ? max : current;
+});
+console.log("Reduce (Max Value):", maxVal); // Output: 5
+
+// Example: Reduce to find Product (Factorial)
+const factorial = [1, 2, 3, 4, 5].reduce((result, current) => result * current);
+console.log("Reduce (Factorial of 5):", factorial); // Output: 120
+
+// ===================================
+// JS LECTURE 6: DOM (DOCUMENT OBJECT MODEL) - PART 1
+// ===================================
+
+/*
+    -- 1. INTRODUCTION TO THE DOM --
+    * The DOM is a programming interface (API) for web documents.
+    * It represents the HTML page as a **tree-like structure** of nodes.
+    * The main goal is to allow JavaScript to **access and manipulate** the structure, style, and content of the webpage.
+    * The 'document' object is the entry point (root) of the DOM tree.
+*/
+
+// A. Accessing the Root Elements
+// The three main root-level objects:
+// console.log(document);       // The entire HTML document
+// console.log(document.body);    // The <body> tag content
+// console.log(document.head);    // The <head> tag content
+
+
+/*
+    -- 2. DOM SELECTION (Finding Elements) --
+    These methods are used to target specific HTML elements.
+*/
+
+// A. By ID (Most specific and fastest)
+// Finds the one element with the matching unique ID.
+// let heading = document.getElementById("myId");
+
+// B. By Class Name (Returns a collection)
+// Finds all elements with the specified class.
+// let classElements = document.getElementsByClassName("myClass");
+// console.log(classElements); // Returns an HTML Collection
+
+// C. By Tag Name (Returns a collection)
+// Finds all elements with the specified HTML tag (e.g., 'p', 'div').
+// let pTags = document.getElementsByTagName("p");
+// console.log(pTags); // Returns an HTML Collection
+
+
+// D. Query Selector (Modern and Versatile)
+// Uses CSS selector syntax (#id, .class, tag) to select elements.
+
+// 1. querySelector(): Selects the **first** element that matches the CSS selector.
+// let firstDiv = document.querySelector("div");      // First <div>
+// let firstClass = document.querySelector(".myClass"); // First element with class 'myClass'
+// let firstId = document.querySelector("#myId");       // Element with id 'myId'
+
+// 2. querySelectorAll(): Selects **all** elements that match the CSS selector.
+// let allDivs = document.querySelectorAll("div");
+// console.log(allDivs); // Returns a NodeList (can use forEach)
+
+
+/*
+    -- 3. DOM MANIPULATION (Changing Content) --
+    These properties change what the user sees.
+*/
+
+let element = document.querySelector("p"); // Assuming a paragraph exists
+
+// A. innerText: Returns or sets only the **visible text** content.
+// element.innerText = "New Visible Text Content";
+
+// B. textContent: Returns or sets the **full, raw text** content, including hidden elements.
+// element.textContent = "Full Text Content, even if hidden!";
+
+// C. innerHTML: Returns or sets the **HTML content** (including tags and structure).
+// element.innerHTML = "<b>This is BOLD</b> and this is normal.";
+
+
+/*
+    -- 4. DOM MANIPULATION (Attributes and Styles) --
+*/
+
+// A. Accessing and Setting Attributes
+// Use setAttribute to change an existing attribute or add a new one.
+// let link = document.querySelector("a");
+// link.setAttribute("href", "https://apnacollege.in");
+// let currentHref = link.getAttribute("href"); // Gets the current value
+
+// B. Modifying Styles
+// Use the .style property. CSS properties must be written in **camelCase**.
+// element.style.backgroundColor = "yellow"; // CSS: background-color
+// element.style.fontSize = "20px";          // CSS: font-size
+
+
+
+// ===========================================
+// LECTURE 7: DOM MANIPULATION (PART 2)
+// ===========================================
+
+// --- 1. SELECTION (Review from Lecture 6) ---
+
+// Assuming we have already selected an element:
+let div = document.querySelector("div");
+let button = document.getElementById("myButton");
+
+
+// --- 2. ACCESSING AND MODIFYING CONTENT ---
+
+/*
+ * These properties allow you to read or set the content inside an element.
+ */
+
+// A. .tagName: Returns the tag name in uppercase (Read-only)
+console.log(div.tagName); // Output: "DIV"
+
+// B. .innerText: Returns/Sets the text content of the element and children (human-readable)
+console.log(div.innerText);
+div.innerText = "New Text Content Only";
+
+// C. .innerHTML: Returns/Sets the HTML content (text, tags, comments) within an element
+console.log(div.innerHTML);
+div.innerHTML = "<b>Bold</b> and <i>Italic</i> Text";
+
+// D. .textContent: Returns/Sets the text content of the element and all descendants (includes hidden elements)
+console.log(div.textContent);
+
+
+// --- 3. ACCESSING AND MODIFYING ATTRIBUTES ---
+
+/*
+ * Methods used to interact directly with standard HTML attributes (id, class, src, href).
+ */
+
+// A. .getAttribute(attr): Get the value of an attribute
+let currentClass = div.getAttribute("class");
+console.log("Current Class:", currentClass);
+
+// B. .setAttribute(attr, val): Set or create the value of an attribute
+div.setAttribute("id", "mainDiv");
+div.setAttribute("style", "color: blue;"); // Setting style directly (less preferred)
+
+// C. .removeAttribute(attr): Remove an attribute
+button.removeAttribute("disabled");
+
+
+// --- 4. MANIPULATING STYLES (Inline CSS) ---
+
+/*
+ * The .style property is used to set inline CSS properties directly on an element.
+ * CSS properties must be written in camelCase (e.g., 'background-color' becomes 'backgroundColor').
+ */
+
+div.style.backgroundColor = "green";
+div.style.fontSize = "20px";
+div.style.color = "white";
+
+
+// --- 5. MANIPULATING CLASSES (Best Practice for Styling) ---
+
+/*
+ * The .classList property is the standard way to add, remove, or toggle CSS classes.
+ * This separates styling from JavaScript logic.
+ */
+
+// A. .classList.add(class): Add a class
+div.classList.add("highlighted");
+
+// B. .classList.remove(class): Remove a class
+div.classList.remove("default-style");
+
+// C. .classList.contains(class): Check if a class exists (returns boolean)
+let hasClass = div.classList.contains("highlighted");
+console.log("Is highlighted?", hasClass);
+
+// D. .classList.toggle(class): Adds the class if it's not present, removes it if it is present.
+button.onclick = () => {
+    div.classList.toggle("active");
+};
+
+
+// --- 6. DOM TREE TRAVERSAL (Moving Around the Tree) ---
+
+/*
+ * Properties used to navigate relative to a selected element. 
+ * Note: These properties only select Element Nodes (they skip text/comment nodes).
+ */
+
+// A. .parentElement: Access the immediate parent element
+let parentEl = div.parentElement;
+
+// B. .children: Access an HTMLCollection of all immediate child elements
+let allChildren = parentEl.children;
+
+// C. .firstElementChild & .lastElementChild: Access the first/last child element
+let firstChild = div.firstElementChild;
+let lastChild = div.lastElementChild;
+
+// D. .nextElementSibling & .previousElementSibling: Access sibling elements
+let nextSibling = div.nextElementSibling;
+
+
+// ===========================================
+//  LECTURE 8: EVENTS IN JAVASCRIPT
+// ===========================================
+
+/**
+ * LECTURE 8: EVENTS IN JAVASCRIPT
+ * Source: Lecture 8 : Events in JavaScript | JavaScript Full Course
+ * -------------------------------------------------------------------------
+ * 1. WHAT ARE EVENTS?
+ * -------------------------------------------------------------------------
+ * - Events are signals that something has occurred.
+ * - They are "changes in the state of an object".
+ * - Events can be triggered by user interactions (clicks, keyboard) or system state (battery low).
+ * * COMMON EVENT TYPES:
+ * - Mouse Events: click, dblclick (double click), mouseover (hover)
+ * - Keyboard Events: keydown, keyup
+ * - Form Events: submit
+ * - Print Events
+ */
+
+/**
+ * -------------------------------------------------------------------------
+ * 2. EVENT HANDLING METHODS
+ * -------------------------------------------------------------------------
+ * There are 3 ways to handle events in JS.
+ */
+
+// METHOD 1: INLINE EVENT HANDLING (Not Recommended)
+// HTML: <button onclick="console.log('Clicked')">Click Me</button>
+// Drawback: Makes HTML bulky.
+
+// METHOD 2: JS NODE.EVENT (Better)
+// Drawback: Can only assign ONE handler per event (overwrites previous ones).
+let btn1 = document.querySelector("#btn1");
+
+btn1.onclick = () => {
+    console.log("Button was clicked");
+};
+
+// METHOD 3: EVENT LISTENERS (Best Practice)
+// - Allows multiple event handlers on the same element.
+// - Syntax: node.addEventListener(event, callback)
+btn1.addEventListener("click", () => {
+    console.log("Handler 1");
+});
+
+btn1.addEventListener("click", () => {
+    console.log("Handler 2"); // Both handlers will run
+});
+
+// REMOVE EVENT LISTENER
+// Note: To remove, the callback function must be the exact same reference (saved in a variable).
+const handler3 = () => {
+    console.log("Handler 3");
+};
+btn1.addEventListener("click", handler3);
+btn1.removeEventListener("click", handler3);
+
+
+/**
+ * -------------------------------------------------------------------------
+ * 3. THE EVENT OBJECT (e)
+ * -------------------------------------------------------------------------
+ * - A special object that has details about the event.
+ * - All event handlers have access to it as the first argument.
+ */
+
+btn1.addEventListener("click", (evt) => {
+    console.log(evt);
+    console.log(evt.type);    // "click"
+    console.log(evt.target);  // The element that was clicked
+    console.log(evt.clientX); // X position of mouse
+    console.log(evt.clientY); // Y position of mouse
+});
+
+
+/**
+ * -------------------------------------------------------------------------
+ * 4. PROJECT: LIGHT / DARK MODE TOGGLE
+ * -------------------------------------------------------------------------
+ * Logic: Toggle between 'light' and 'dark' states on button click.
+ */
+
+let modeBtn = document.querySelector("#mode");
+let body = document.querySelector("body");
+let currMode = "light"; // variable to track state
+
+modeBtn.addEventListener("click", () => {
+    if (currMode === "light") {
+        currMode = "dark";
+        // Method 1: Direct Style Change
+        // body.style.backgroundColor = "black";
+        
+        // Method 2: Using CSS Classes (Better)
+        body.classList.add("dark");
+        body.classList.remove("light");
+    } else {
+        currMode = "light";
+        // body.style.backgroundColor = "white";
+        
+        body.classList.add("light");
+        body.classList.remove("dark");
+    }
+    console.log(currMode);
+});
+
+/* CSS REQUIRED FOR METHOD 2:
+.dark {
+    background-color: black;
+    color: white;
+}
+.light {
+    background-color: white;
+    color: black;
+}
+*/
+
+
+
+
+// ===========================================
+// LECTURE 11 : CLASSES & OBJECTS IN JAVASCRIPT
+// ===========================================
+
+/**
+ * LECTURE NOTES: CLASSES & OBJECTS IN JAVASCRIPT
+ * Source: Lecture 11 : Classes & Objects | JavaScript Full Course
+ * * -------------------------------------------------------------------------
+ * 1. OBJECTS
+ * -------------------------------------------------------------------------
+ * An object is an entity having state (properties) and behavior (methods).
+ * JS objects have a special property called 'prototype'.
+ */
+
+// DIRECT WAY TO CREATE AN OBJECT (Object Literal) [00:02:45]
+const student = {
+    // Properties (State)
+    fullName: "Shradha Khapra", 
+    marks: 94.4,
+
+    // Methods (Behavior) [00:03:41]
+    printMarks: function() {
+        // 'this' keyword refers to the calling object (student) [00:05:10]
+        console.log("Marks =", this.marks); 
+    }
+};
+
+/**
+ * -------------------------------------------------------------------------
+ * 2. PROTOTYPES
+ * -------------------------------------------------------------------------
+ * - A JS object is an entity having state and behavior (properties and methods). [00:01:53]
+ * - JS objects have a special property called 'prototype'. [00:06:00]
+ * - We can set our own prototype using __proto__.
+ * - If object & prototype have same method, object's method is used. [00:16:06]
+ */
+
+const employee = {
+    calcTax() {
+        console.log("Tax rate is 10%");
+    }
+};
+
+const karanArjun = {
+    salary: 50000,
+    
+    // Setting prototype manually [00:11:59]
+    // karanArjun will now inherit calcTax from employee
+};
+
+karanArjun.__proto__ = employee; 
+karanArjun.calcTax(); // Prints: Tax rate is 10% [00:12:45]
+
+
+/**
+ * -------------------------------------------------------------------------
+ * 3. CLASSES
+ * -------------------------------------------------------------------------
+ * - Class is a program code template for creating objects. [00:16:44]
+ * - Those objects will have some state (variables) & some behavior (functions) inside it.
+ */
+
+class ToyotaCar {
+    // Constructor: Automatically invoked by 'new' [00:26:10]
+    // Used to initialize the object
+    constructor(brand, mileage) {
+        console.log("Creating new object");
+        this.brand = brand;
+        this.mileage = mileage;
+    }
+
+    start() {
+        console.log("start");
+    }
+
+    stop() {
+        console.log("stop");
+    }
+}
+
+// Creating Object from Class [00:21:02]
+let fortuner = new ToyotaCar("Fortuner", 10); // Invokes constructor
+console.log(fortuner);
+fortuner.start(); // [00:22:18]
+
+
+/**
+ * -------------------------------------------------------------------------
+ * 4. INHERITANCE
+ * -------------------------------------------------------------------------
+ * - Inheritance is passing down properties & methods from parent class to child class. [00:32:32]
+ * - 'extends' keyword is used. [00:33:27]
+ */
+
+class Person {
+    constructor(name) {
+        this.species = "homo sapiens";
+        this.name = name;
+    }
+    
+    eat() {
+        console.log("eat");
+    }
+}
+
+class Engineer extends Person { // Child class inherits from Parent [00:33:43]
+    work() {
+        console.log("solve problems, build something");
+    }
+}
+
+// METHOD OVERRIDING [00:39:19]
+// If Child & Parent have same method, Child's method will be used.
+
+/**
+ * -------------------------------------------------------------------------
+ * 5. SUPER KEYWORD
+ * -------------------------------------------------------------------------
+ * - The 'super' keyword is used to call the constructor of its parent class 
+ * to access the parent's properties and methods. [00:40:44]
+ * - Must call super() before using 'this' in a derived class constructor. [00:43:26]
+ */
+
+class Doctor extends Person {
+    constructor(name, degree) {
+        // Must call super constructor first to pass name to Person class
+        super(name); // [00:43:56]
+        this.degree = degree;
+    }
+
+    treat() {
+        super.eat(); // Can also call parent methods using super [00:47:47]
+        console.log("Treating patients");
+    }
+}
+
+let doc1 = new Doctor("Strange", "MBBS");
+
+
+/**
+ * -------------------------------------------------------------------------
+ * 6. ERROR HANDLING (TRY-CATCH)
+ * -------------------------------------------------------------------------
+ * - try-catch blocks are used to handle errors so code execution doesn't stop. [00:57:42]
+ */
+
+let a = 5;
+let b = 10;
+
+console.log("a = ", a);
+console.log("b = ", b);
+console.log("a+b = ", a+b);
+
+try {
+    console.log("a+b = ", a+c); // Error: c is not defined [00:56:55]
+} catch(err) {
+    console.log(err); // Handles error without stopping code [00:58:39]
+}
+
+console.log("This line will still run because error was caught");
+
+
+
+
+// ===========================================
+//  LECTURE 12: CALLBACKS, PROMISES & ASYNC/AWAIT
+// ===========================================
+
+/* -- 1. SYNCHRONOUS VS ASYNCHRONOUS --
+   * Synchronous: Code executes line by line. Each instruction waits for the previous one to finish.
+   * Asynchronous: Code allows long-running tasks to start without blocking execution.
+*/
+
+// A. Synchronous Example
+// console.log("One");
+// console.log("Two"); 
+// console.log("Three"); // Prints 1, 2, 3 in order
+
+// B. Asynchronous Example (setTimeout)
+function hello() {
+    // console.log("Hello");
+}
+// setTimeout(hello, 2000); // Runs after 2s (2000ms)
+
+// console.log("One");
+// console.log("Two");
+// setTimeout(() => console.log("Hello"), 4000);
+// console.log("Three");
+// Output: One, Two, Three, Hello (after 4s)
+
+
+/* -- 2. CALLBACKS --
+   * A function passed as an argument to another function.
+*/
+
+function sum(a, b) {
+    console.log(a + b);
+}
+
+function calculator(a, b, sumCallback) {
+    sumCallback(a, b);
+}
+
+// calculator(1, 2, sum); // Output: 3
+
+
+/* -- 3. CALLBACK HELL (Nesting Problem) --
+   * Nested callbacks make code hard to understand and manage.
+   * Example: Getting data 1, then data 2, then data 3...
+*/
+
+function getData(dataId, getNextData) {
+    setTimeout(() => {
+        console.log("Data", dataId);
+        if (getNextData) {
+            getNextData();
+        }
+    }, 2000);
+}
+
+// The "Pyramid of Doom":
+// getData(1, () => {
+//     console.log("Getting data 2...");
+//     getData(2, () => {
+//         console.log("Getting data 3...");
+//         getData(3, () => {
+//             console.log("Getting data 4...");
+//             getData(4);
+//         });
+//     });
+// });
+
+
+/* -- 4. PROMISES --
+   * An object representing the eventual completion (or failure) of an async operation.
+   * States: Pending, Fulfilled (Resolved), Rejected.
+*/
+
+// A. Creating a Promise
+let promise = new Promise((resolve, reject) => {
+    // console.log("I am a promise");
+    // resolve("Success!"); // OR
+    // reject("Some error occurred");
+});
+
+// B. Using Promises (.then & .catch)
+const getPromise = () => {
+    return new Promise((resolve, reject) => {
+        // console.log("I am a promise");
+        // resolve("success");
+        // reject("network error");
+    });
+};
+
+let p1 = getPromise();
+p1.then((res) => {
+    // console.log("Promise fulfilled:", res);
+});
+
+p1.catch((err) => {
+    // console.log("Promise rejected:", err);
+});
+
+// C. Solving Callback Hell with Promise Chaining
+function asyncGetData(dataId) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log("Data", dataId);
+            resolve("success");
+        }, 2000);
+    });
+}
+
+// Chain:
+// console.log("Getting data 1...");
+// asyncGetData(1)
+//     .then((res) => {
+//         console.log("Getting data 2...");
+//         return asyncGetData(2);
+//     })
+//     .then((res) => {
+//         console.log("Getting data 3...");
+//         return asyncGetData(3);
+//     })
+//     .then((res) => {
+//         console.log("Success");
+//     });
+
+
+/* -- 5. ASYNC / AWAIT (Modern & Cleanest Way) --
+   * 'async' keyword makes a function return a Promise.
+   * 'await' keyword pauses execution until the Promise is settled.
+*/
+
+async function getAllData() {
+    console.log("Getting data 1...");
+    await asyncGetData(1); // Waits here for 2s
+    
+    console.log("Getting data 2...");
+    await asyncGetData(2); // Waits here for 2s
+    
+    console.log("Getting data 3...");
+    await asyncGetData(3); // Waits here for 2s
+    
+    console.log("All data fetched");
+}
+
+// getAllData(); // Call the async function
+
+// IIFE (Immediately Invoked Function Expression)
+// If you want to run the async function immediately without calling it manually:
+(async function () {
+    // console.log("Getting data 1...");
+    // await asyncGetData(1);
+    // console.log("Done");
+})();
+
+
+
+// ===========================================
+//  LECTURE 13: FETCH API & REQUESTS
+// ===========================================
+
+/* -- 1. FETCH API --
+   * The Fetch API provides an interface for fetching resources (including across the network).
+   * It uses Requests and Responses.
+   * It returns a Promise.
+*/
+
+const URL = "https://cat-fact.herokuapp.com/facts";
+
+// A. Fetching Data using Async/Await (Recommended)
+const getFacts = async () => {
+    console.log("Getting data...");
+    
+    // 1. Send Request
+    let response = await fetch(URL); 
+    // console.log(response); // JSON status is 200 (OK) but body is not readable yet.
+
+    // 2. Parse JSON (Asynchronous process)
+    // AJAJ: Asynchronous JavaScript and JSON (Modern AJAX)
+    let data = await response.json(); 
+    
+    console.log(data); // The actual usable data (Array of facts)
+    // console.log(data[0].text); // Access specific data
+};
+
+// getFacts();
+
+
+// B. Fetching Data using Promise Chaining (Older Syntax)
+function getFactsChain() {
+    fetch(URL)
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log(data);
+        });
+}
+
+
+/* -- 2. HTTP REQUEST METHODS --
+   * GET: Retrieve data (Default for fetch).
+   * POST: Send data to create a resource.
+   * PUT / PATCH: Update a resource.
+   * DELETE: Delete a resource.
+*/
+
+// Example of a POST request options object (Optional Advanced)
+/*
+   fetch(URL, {
+       method: "POST",
+       headers: {
+           "Content-Type": "application/json",
+       },
+       body: JSON.stringify({ key: "value" }),
+   });
+*/
